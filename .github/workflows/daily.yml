@@ -1,35 +1,42 @@
 name: Market Breadth diário
 
-# O GitHub só aceita horário em UTC. Os dois horários abaixo cobrem o horário de
-# inverno e o de verão de Berlim; o passo "Checar horário" deixa rodar só aquele
-# que cai às 7h30 em Berlim, para o e-mail chegar perto das 8h.
+# O agendamento do GitHub (sempre em UTC) às vezes atrasa ou descarta execuções.
+# Por isso há várias tentativas pela manhã (a cada 30 min, fora dos minutos de pico),
+# e o passo "Decidir" garante que o e-mail sai UMA vez por dia, a partir das 7h30 de Berlim.
 on:
   schedule:
-    - cron: "30 5 * * *"   # 06:30 inverno (CET) | 07:30 verão (CEST)
-    - cron: "30 6 * * *"   # 07:30 inverno (CET) | 08:30 verão (CEST)
-  workflow_dispatch:        # botão "Run workflow" para rodar na hora
+    - cron: "7,37 5-9 * * *"   # 06:07–10:37 inverno (CET) | 07:07–11:37 verão (CEST)
+  workflow_dispatch:            # botão "Run workflow": roda na hora, sempre
 
 permissions:
-  contents: write           # para gravar docs/ (dashboard + histórico) de volta no repositório
+  contents: write               # para gravar docs/ (dashboard + histórico) de volta no repositório
+
+concurrency:
+  group: market-breadth
+  cancel-in-progress: false
 
 jobs:
   breadth:
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
-      - name: Checar horário de Berlim
+      - uses: actions/checkout@v4
+
+      - name: Decidir se roda agora
         id: tz
         run: |
-          H=$(TZ=Europe/Berlin date +%H)
-          echo "Hora em Berlim: $H"
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "$H" = "07" ]; then
+          HM=$(TZ=Europe/Berlin date +%H%M)
+          TODAY=$(TZ=Europe/Berlin date +%Y-%m-%d)
+          LAST=$(cat docs/last_sent.txt 2>/dev/null || echo "nunca")
+          echo "Berlim: $HM | hoje: $TODAY | último envio: $LAST"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          elif [ "$LAST" != "$TODAY" ] && [ "$HM" -ge 730 ] && [ "$HM" -le 1200 ]; then
             echo "go=true" >> "$GITHUB_OUTPUT"
           else
             echo "go=false" >> "$GITHUB_OUTPUT"
           fi
-
-      - uses: actions/checkout@v4
-        if: steps.tz.outputs.go == 'true'
+          echo "today=$TODAY" >> "$GITHUB_OUTPUT"
 
       - uses: actions/setup-python@v5
         if: steps.tz.outputs.go == 'true'
@@ -53,11 +60,13 @@ jobs:
           DASHBOARD_URL: ${{ vars.DASHBOARD_URL }}
         run: python market_breadth.py
 
-      - name: Gravar dashboard e histórico no repositório
+      - name: Gravar dashboard, histórico e data do envio no repositório
         if: steps.tz.outputs.go == 'true'
         run: |
+          echo "${{ steps.tz.outputs.today }}" > docs/last_sent.txt
           git config user.name  "market-breadth-bot"
           git config user.email "actions@users.noreply.github.com"
           git add docs/
-          git commit -m "Atualização diária $(date -u +%Y-%m-%d)" || echo "nada novo"
+          git commit -m "Atualização diária ${{ steps.tz.outputs.today }}" || echo "nada novo"
+          git pull --rebase --quiet || true
           git push
