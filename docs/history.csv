@@ -1,8 +1,5 @@
 Data,Mercado,% acima MA17,% RSI>65,% RSI<35,Sinal
 2026-11-12,S&P 500 (EUA),65.01,13.32,3.38,Neutro
-2026-11-13,Euro Stoxx 50,78.0,36.0,2.0,Neutro
-2026-11-13,DAX (Alemanha),82.5,32.5,2.5,Neutro
-2026-11-13,FTSE 100 (Reino Unido),79.0,20.0,0.0,Neutro
 2026-11-13,Japão (top 40),57.5,15.0,7.5,Neutro
 2026-11-13,Nifty 50 (Índia),91.67,39.58,0.0,Euforia: possível topo
 2026-11-13,Hang Seng (Hong Kong),68.42,10.53,9.21,Neutro
@@ -19,7 +16,18 @@ Data,Mercado,% acima MA17,% RSI>65,% RSI<35,Sinal
 2026-11-16,Nifty 50 (Índia),91.67,39.58,0.0,Euforia: possível topo
 2026-11-16,Hang Seng (Hong Kong),68.83,19.48,12.99,Neutro
 2026-11-16,"China A (CSI 300, amostra)",59.52,23.81,7.14,Neutro
-2026-11-13,Ibovespa (Brasil),36.78,4.6,14.94,Neutro
 2026-11-13,"Países (ETFs MSCI, em USD)",54.76,7.14,4.76,Neutro
 2026-11-16,"Cripto (top 23, dias úteis)",0.0,0.0,95.45,Pânico: possível fundo
 2026-11-16,GLOBAL (ponderado),67.69,,,
+2026-11-16,S&P 500 (EUA),54.27,19.28,6.36,Neutro
+2026-11-13,Euro Stoxx 50,78.0,38.0,2.0,Neutro
+2026-11-13,DAX (Alemanha),80.0,30.0,2.5,Neutro
+2026-11-13,FTSE 100 (Reino Unido),78.0,26.0,0.0,Neutro
+2026-11-17,Japão (top 40),40.0,12.5,12.5,Neutro
+2026-11-17,Nifty 50 (Índia),88.89,45.83,0.0,Neutro
+2026-11-17,Hang Seng (Hong Kong),54.55,22.08,15.58,Neutro
+2026-11-17,"China A (CSI 300, amostra)",59.52,26.19,7.14,Neutro
+2026-11-13,Ibovespa (Brasil),36.78,4.6,14.94,Neutro
+2026-11-16,"Países (ETFs MSCI, em USD)",42.86,4.76,11.9,Neutro
+2026-11-17,"Cripto (top 23, dias úteis)",0.0,0.0,95.45,Pânico: possível fundo
+2026-11-17,GLOBAL (ponderado),57.34,,,
