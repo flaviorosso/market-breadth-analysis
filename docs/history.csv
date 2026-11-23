@@ -61,15 +61,20 @@ Data,Mercado,% acima MA17,% RSI>65,% RSI<35,Sinal
 2026-11-19,DAX (Alemanha),27.5,5.0,17.5,Neutro
 2026-11-19,FTSE 100 (Reino Unido),25.0,3.0,10.0,Neutro
 2026-11-19,"Cripto (top 23, dias úteis)",0.0,0.0,90.91,Pânico: possível fundo
+2026-11-20,Nifty 50 (Índia),81.25,43.75,0.0,Neutro
+2026-11-20,Hang Seng (Hong Kong),22.08,2.6,32.47,Neutro
+2026-11-20,"China A (CSI 300, amostra)",66.67,38.1,9.52,Neutro
+2026-11-20,"Cripto (top 23, dias úteis)",0.0,0.0,100.0,Pânico: possível fundo
+2026-11-20,GLOBAL (ponderado),17.6,,,
 2026-11-20,S&P 500 (EUA),13.75,1.59,25.7,Pânico: possível fundo
 2026-11-20,Euro Stoxx 50,14.0,0.0,30.0,Pânico: possível fundo
 2026-11-20,DAX (Alemanha),15.0,2.5,20.0,Pânico: possível fundo
 2026-11-20,FTSE 100 (Reino Unido),22.0,3.0,23.0,Neutro
 2026-11-20,Japão (top 40),25.0,7.5,37.5,Neutro
-2026-11-20,Nifty 50 (Índia),81.25,43.75,0.0,Neutro
-2026-11-20,Hang Seng (Hong Kong),22.08,2.6,32.47,Neutro
-2026-11-20,"China A (CSI 300, amostra)",66.67,38.1,9.52,Neutro
+2026-11-23,Nifty 50 (Índia),77.08,33.33,2.08,Neutro
+2026-11-23,Hang Seng (Hong Kong),16.88,2.6,31.17,Neutro
+2026-11-23,"China A (CSI 300, amostra)",52.38,16.67,9.52,Neutro
 2026-11-19,Ibovespa (Brasil),49.43,4.6,31.03,Neutro
 2026-11-20,"Países (ETFs MSCI, em USD)",7.14,2.38,73.81,Pânico: possível fundo
-2026-11-20,"Cripto (top 23, dias úteis)",0.0,0.0,100.0,Pânico: possível fundo
-2026-11-20,GLOBAL (ponderado),17.6,,,
+2026-11-23,"Cripto (top 23, dias úteis)",0.0,0.0,90.91,Pânico: possível fundo
+2026-11-23,GLOBAL (ponderado),17.16,,,
